@@ -11,4 +11,6 @@ let bubbleSort = (arr) => {
     return arr;
 };
 
-console.log(bubbleSort([8,2,9,5,3,6,1,4,10,6]))
+console.log(bubbleSort([8, 2, 9, 5, 3, 6, 1, 4, 10, 6]))
+
+
