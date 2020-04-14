@@ -1,3 +1,5 @@
+// Given an array of integers A sorted in non-decreasing order, return an array of the squares of each number, also in sorted non-decreasing order.
+
 var sortedSquares = function (A) {
   let newArr = [];
   for (let i = 0; i < A.length; i++) {
