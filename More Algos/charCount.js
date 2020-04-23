@@ -1,3 +1,5 @@
+// count all characters in string
+
 const charCount = (str) => {
     let result = {};
     for (let i = 0; i < str.length; i++) {
