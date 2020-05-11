@@ -16,9 +16,12 @@ function sameFrequency(num1, num2) {
 
     for (let i = 0; i < num1.length; i++) {
         count1[num1[i]] = (count1[num1[i]] || 0) + 1
+        console.log(count1);
+        
     }
     for (let j = 0; j < num1.length; j++) {
         count2[num2[j]] = (count2[num2[j]] || 0) + 1
+        console.log(count2);
     }
     for (let key in count1) {
         if (count1[key] !== count2[key]) {
@@ -29,4 +32,4 @@ function sameFrequency(num1, num2) {
         }
     }
 }
-console.log(sameFrequency(182, 281));
+console.log(sameFrequency(1828, 2818));
