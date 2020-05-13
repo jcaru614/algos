@@ -12,14 +12,14 @@ function fibonacciGenerator(n) {
     }
     return newArr;
 }
-fibonacciGenerator(4)
+console.log(fibonacciGenerator(8))
 
 
 function fib(n) {
     if (n < 2){
       return n
     }
-    return fib(n - 1) + fib (n - 2)
+    return fib(n - 1) + fib(n - 2)
   }
 
-  fib(4)
+ console.log(fib(4))
