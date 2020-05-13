@@ -1,0 +1,13 @@
+from random import choice
+
+questions = ["Why is the sky blue?: ",
+             "Why is there a face on the moon?: ",
+             "Where are the dinosaurs?: "]
+
+question = choice(questions)
+answer = input (question).lower().strip()
+
+while answer != "just because":
+    answer = input("why?: ").strip().lower()
+
+print("Ohh ok")
