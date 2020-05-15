@@ -1,18 +1,15 @@
 // return a new array of capitalzied words
 
 function capitalizeWords(words, capWords) {
-    
     if (words.length === 0) {
         return capWords
     }
-    // capWords = [];
     let push = words[0].toUpperCase();
     capWords.push(push);
     return capitalizeWords(words.slice(1), capWords);
-  }
-  
+}
 
-  console.log(capitalizeWords(['i', 'am', 'learning', 'recursion'], []));
+console.log(capitalizeWords(['hello', 'i', 'am', 'joey'], []));
     // ['I', 'AM', 'LEARNING', 'RECURSION']
 
 // capitalizeWords(['i', 'am', 'learning'])
