@@ -8,7 +8,6 @@ function addUpTo(n) {
 
 console.log(addUpTo(6));
 
-
 function addUpTo2(n) {
     return n * (n + 1) / 2
 }

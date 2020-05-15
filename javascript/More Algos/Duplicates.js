@@ -1,7 +1,7 @@
 function duplicates() {
     let dups = {}
     for(let val in arguments){
-      dups[arguments[val]] = (dups[arguments[val]] || 0) + 1
+      dups[arguments[val]] ? dups[arguments[val]] += 1 : dups[arguments[val]] = 1
     }
     for(let key in dups){
       if(dups[key] > 1) return true
