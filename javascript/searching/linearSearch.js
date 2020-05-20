@@ -1,12 +1,8 @@
-function linSearch(array, value) {
-
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] === value) {
-            return i;
-        } else {
-            return -1;
-        }
-
+function linearSearch(array, value){
+    for(var i = 0; i < array.length; i++){
+        if(array[i] === value) return i;
     }
+    return -1;
 }
-console.log(linSearch([4, 3, 9, 5, 2, 5, 4, 7, 5, 1, 2, 9], 3))
+
+console.log(linearSearch([34,51,1,2,3,45,56,687], 51))
