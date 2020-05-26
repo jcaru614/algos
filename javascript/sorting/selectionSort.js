@@ -3,16 +3,16 @@
 // if smaller then make the new minimum and continue to end of array
 
 function selectionSort(arr) {
-    for (var i = 0; i < arr.length; i++) {
-        var smallest = i; 
+    for (let i = 0; i < arr.length; i++) {
+        let smallest = i; 
         console.log(smallest);
-        for (var j = i + 1; j < arr.length; j++) {
+        for (let j = i + 1; j < arr.length; j++) {
             if (arr[j] < arr[smallest]) {
                 smallest = j;
             }
         }
         if (i !== smallest) {
-            var temp = arr[i];
+            let temp = arr[i];
             arr[i] = arr[smallest];
             arr[smallest] = temp;
         }
