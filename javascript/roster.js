@@ -11,13 +11,13 @@ function add() {
 };
 
 function remove() {
-  var removeName("What name would you like to remove?");
+  var removeName = prompt("What name would you like to remove?");
   studentRoster.pop(removeName);
 };
 
 function display() {
   var displayData = prompt("Would you like to see the roster?")
-  console.log(studentRoster);
+  console.log(displayData);
 };
 
 function quit() {
@@ -28,7 +28,7 @@ var start = prompt("Would you like to start the roster web app? y/n");
 var request = "empty";
 
 if (start === "y") {
-  while (request!--"quit") {
+  while (request !== "quit") {
     request = prompt("Please select an action: add, remove, display, or quit.");
     if (request === "add") {
       add();
