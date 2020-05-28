@@ -152,12 +152,12 @@ function swap(arr) {
     console.log(swap([1,2,3,4]));
     
 
-// Number to String - Write a function that takes an array of numbers and replaces any negative values within the array with the string 'Dojo'. For example if array = [-1,-3,2], your function will return ['Dojo','Dojo',2].
+// Number to String - Write a function that takes an array of numbers and replaces any negative values within the array with the string 'joey'. For example if array = [-1,-3,2], your function will return ['joey','joey',2].
 
 function negToString (arr) {
     for(var i=0; i<arr.length; i++) {
         if (arr[i] < 0) {
-            arr[i] = 'Dojo';
+            arr[i] = 'joey';
         }
     }
         return arr

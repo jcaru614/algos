@@ -9,17 +9,6 @@ function sigma(num) {
 }
 sigma(3)
 
-// Factorial - Write a function factorial(num) that, given a number, returns the product (multiplication) of all positive integers from 1 up to the given number (inclusive).  For example, factorial(3) = 6 (or 1*2*3); factorial(5) = 120 (or 1*2*3*4*5).
-
-function factorial(num) {
-    var multiplyCounter = 1;
-    for (let i = 1; i <= num; i++) {
-        multiplyCounter = multiplyCounter * i;
-    }
-    return multiplyCounter;
-}
-factorial(3);
-
 
 // Array: Second-to-Last: Return the second-to-last element of an array. Given [42, true, 4, "Liam", 7], return "Liam".  If array is too short, return null.
 
