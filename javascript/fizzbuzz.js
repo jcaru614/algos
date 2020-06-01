@@ -15,8 +15,6 @@ function fizzBuzz(n) {
 
 
 
-
-
 function fizzBuzz() {
     var output = [];
     var count = 1;
