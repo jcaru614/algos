@@ -1,7 +1,6 @@
 // picks a pivot point typically the last or first i where you move all 
 // the numbers less than to the left and greater than to the right
 
-
 // quick sort spread operator **************************************
 
 function quickSortSpread(array) {
