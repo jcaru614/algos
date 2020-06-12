@@ -12,6 +12,7 @@ class SinglyLinkedList {
         this.length = 0;
     }
     push(val) {
+        // add to back
         const newNode = new Node(val);
         if (!this.head) {
             this.head = newNode;
@@ -28,6 +29,7 @@ class SinglyLinkedList {
         return this;
     }
     pop() {
+        // remove from back
         if (!this.head) return undefined;
 
         let runner = this.head;
@@ -49,6 +51,77 @@ class SinglyLinkedList {
         }
         return this;
     }
+    shift() {
+        // remove from front
+        if (!this.head) return undefined;
+        let removedNode = this.head;
+        // moving tether to the next to loose the head
+        this.head = removedNode.next;
+        this.length--;
+        return removedNode;
+    }
+    unshift(val) {
+        // add to front
+        const newNode = new Node(val);
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = this.head;
+        }
+        // set the new node's next to the head
+        newNode.next = this.head;
+        // set the new node as the head
+        this.head = newNode;
+
+        this.length++;
+        return this;
+    }
+    get(index) {
+        // get node at the index that was passed in
+        if (this.length <= index) return null;
+        let runner = this.head;
+        let counter = 0;
+        while (counter < index) {
+            runner = runner.next;
+            counter++;
+        }
+        return runner;
+    }
+    set(index, val) {
+        // set a new value on a node at that index
+        const gotIndex = this.get(index);
+        if (gotIndex) {
+            gotIndex.val = val;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    insert(index, val) {
+        // inserts a node at a given index
+        if (index < 0 || index > this.length) {
+            // if index is less than zero or greater than the length return false
+            return false;
+        } else if (index === this.length) {
+            // index is equal to length then push a node
+            return this.push(val)
+        } else if (index === 0) {
+            // if index is first place than just call unshift
+            return this.unshift(val);
+        } else {
+            const newNode = new Node(val);
+           let prev = this.get(index - 1);
+           let temp = prev.next
+           let counter = 0;
+           while (counter !== index) {
+               counter++
+               prev.next = newNode;
+               newNode.next = temp;
+           }
+           this.length++
+           return true;
+        }
+
+    }
 
 }
 
@@ -57,9 +130,10 @@ let list = new SinglyLinkedList;
 
 list.push(2)
 list.push(5)
+list.push(':)')
 list.push(7)
-list.pop()
-list.pop()
-
-
+list.unshift(22)
+// console.log(list.get(3))
+// list.set(1, "setTheList")
+// list.insert(5, "insertInList")
 console.log(list)
