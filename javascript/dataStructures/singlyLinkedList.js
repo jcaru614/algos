@@ -109,18 +109,40 @@ class SinglyLinkedList {
             return this.unshift(val);
         } else {
             const newNode = new Node(val);
-           let prev = this.get(index - 1);
-           let temp = prev.next
-           let counter = 0;
-           while (counter !== index) {
-               counter++
-               prev.next = newNode;
-               newNode.next = temp;
-           }
-           this.length++
-           return true;
+            let prev = this.get(index - 1);
+            let temp = prev.next
+            prev.next = newNode;
+            newNode.next = temp;
+            this.length++
+            return true;
         }
-
+    }
+    remove(index) {
+        // removes a node at a given index
+        if (index < 0 || index > this.length) {
+            return undefined;
+        } else if (index === this.length - 1) {
+            return this.pop()
+        } else if (index === 0) {
+            return this.shift();
+        } else {
+            let previous = this.get(index - 1);
+            let nodeToRemove = previous.next;
+            previous.next = nodeToRemove.next;
+            this.length--;
+            return nodeToRemove;
+        }
+    }
+    reverse() {
+        let runner = this.head;
+        let prev = null;
+        while (runner) {
+            let next = runner.next;
+            runner.next = prev;
+            prev = runner;
+            runner = next;
+        }
+        return this;
     }
 
 }
@@ -130,10 +152,16 @@ let list = new SinglyLinkedList;
 
 list.push(2)
 list.push(5)
-list.push(':)')
-list.push(7)
-list.unshift(22)
+list.push(6)
+list.push(8)
+list.push(9)
+list.push(11)
+list.push(15)
+list.push(17)
+// list.unshift(22)
 // console.log(list.get(3))
 // list.set(1, "setTheList")
-// list.insert(5, "insertInList")
+// list.insert(1, "insertInList")
+// console.log(list.remove(3))
+console.log("reversed list" , list.reverse())
 console.log(list)
