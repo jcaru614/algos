@@ -1,4 +1,4 @@
-// factorial is n-1 * n -1 until it reaches 0
+// factorial is n * n -1 until it reaches 0
 
 function factorial(num) {
   if (num === 0) {
