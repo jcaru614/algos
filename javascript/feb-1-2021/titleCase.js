@@ -4,6 +4,7 @@ const titleCase = (string) => {
 	let newStr = '';
 
 	newStr += string[0].toUpperCase();
+	
 	for (let i = 1; i < string.length; i++) {
 		if (string[i - 1] === ' ') {
 			newStr += string[i].toUpperCase();
