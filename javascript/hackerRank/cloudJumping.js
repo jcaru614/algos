@@ -4,19 +4,6 @@
 // It is always possible to win the game.
 // For each game, you will get an array of clouds numbered 0 if they are safe or 1 if they must be avoided.
 
-// if (c[i + 1] === thunderheads) {
-// 	console.log("i if", i)
-// 	i = i + 2;
-// 	console.log("i + if", i)
-// 	jumps ++;
-// 	console.log("jumps ", jumps);
-// } else if (c[i + 1] === cumulus) {
-// 	console.log("i + if else", i)
-// 	i ++;
-// 	console.log("i + else if", i)
-// 	jumps ++;
-// 	console.log("umps ", jumps);
-// }
 
 function jumpingOnClouds(c) {
 	let cumulus = 0;
