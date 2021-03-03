@@ -13,7 +13,7 @@ function countSignals(frequencies, filterRanges) {
             }
     
         }
-        return counter;iuoo
+        return counter;
     }
     
     console.log(countSignals([8,15,14,16,21], [[10,17], [13,15], [13,17]]));
