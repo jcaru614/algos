@@ -10,3 +10,6 @@ function fibonacci(num) {
 }
 
 console.log(fibonacci(8));
+
+let a = 5
+console.log(++a)
