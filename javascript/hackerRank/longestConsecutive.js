@@ -11,7 +11,7 @@ function longestConsecutive(nums) {
 	const longestSequence = [];
 	longestSequence.push(sorted[0]);
 	for (let i = 0; i < sorted.length; i++) {
-		if (nums[i] > nums[i - 1] && nums[i] === nums[i - 1] + 1) {
+		if (sorted[i] > sorted[i - 1] && sorted[i] === sorted[i - 1] + 1) {
 			longestSequence.push(nums[i]);
 		}
 	}
