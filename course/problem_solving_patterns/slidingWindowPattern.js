@@ -11,6 +11,7 @@ const slidingWindowPatternMaxSubArray = (array, num) => {
 	if (array.length < num) return null;
 
 	for (let i = 0; i < num; i++) {
+		// this creates the window
 		maxSum += array[i];
 	}
 	tempSum = maxSum;
