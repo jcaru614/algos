@@ -1,4 +1,5 @@
 // How could you find all prime factors of a number?
+
 const allPrimeFactors = (n) => {
 	let primeStorage = [],
 		divisor = 2;
