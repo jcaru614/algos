@@ -1,3 +1,6 @@
+// Bubble sort algorithm is an algorithm that sorts the array by comparing two adjacent elements and swaps them if they are not in the intended order. 
+// larger values bubble up to the top or end of the array
+
 const bubbleSort = (arr) => {
 	let isSwapped;
 	for (var i = 0; i < arr.length; i++) {
