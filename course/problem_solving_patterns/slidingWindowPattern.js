@@ -5,6 +5,7 @@
 // Slidin window pattern moves in the same direction at same time vs multiple pointer pattern moves at different extremes
 // and in diffferent intervals each iteration step
 
+// write a function which accepts an array of ints and a number. Should calculate the max sum of n consecutive elements in the array
 const slidingWindowPatternMaxSubArray = (array, num) => {
 	let maxSum = 0;
 	let tempSum = 0;
