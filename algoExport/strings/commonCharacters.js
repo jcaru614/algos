@@ -29,6 +29,7 @@ function commonCharactersWithMap(strings) {
   let commonChars = [];
 
   for (const item in flatStrings) {
+    console.log("index ", item);
     let char = flatStrings[item];
     charFrequency.set(
       char,
