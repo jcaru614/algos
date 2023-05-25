@@ -1,32 +1,28 @@
 function longestPeak(array) {
-	let peakCount = 0,
-		tempPeakCount = 0,
-		center = 1;
+  let peakCount = 0;
 
-	while (center < array.length - 1) {
-		let left = center - 1,
-			right = center + 1;
+  for (let center = 1; center < array.length - 1; center++) {
+    let left = center - 1;
+    let right = center + 1;
 
-		if (array[left] < array[center] && array[right] < array[center]) {
-			tempPeakCount = 3;
+    if (array[left] < array[center] && array[right] < array[center]) {
+      let tempPeakCount = 3;
 
-			while (left > 0 && array[left] < array[left + 1]) {
-				tempPeakCount++;
-				left--;
-			}
+      while (left > 0 && array[left - 1] < array[left]) {
+        tempPeakCount++;
+        left--;
+      }
 
-			while (right < array.length - 1 && array[right] > array[right + 1]) {
-				tempPeakCount++;
-				right++;
-			}
+      while (right < array.length - 1 && array[right] > array[right + 1]) {
+        tempPeakCount++;
+        right++;
+      }
 
-			if (tempPeakCount > peakCount) peakCount = tempPeakCount;
-		}
+      peakCount = Math.max(peakCount, tempPeakCount);
+    }
+  }
 
-		center++;
-	}
-
-	return peakCount;
+  return peakCount;
 }
 
 console.log(longestPeak([1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3]));
