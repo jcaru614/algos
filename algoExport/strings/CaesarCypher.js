@@ -1,6 +1,7 @@
 function caesarCipherEncryptor(string, num) {
 	let cipheredString = '';
 	let alphabetMap = {};
+	
 	for (let i = 0; i < 26; i++) {
 		let letter = String.fromCharCode(i + 97);
 		alphabetMap[letter] = i;
