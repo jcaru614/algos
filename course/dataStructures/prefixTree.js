@@ -1,94 +1,88 @@
+// each letter is a node. If you insert app after apple it will mark the second p and e as isEndOfWord = true
+// if you add pan as a third word then it will check if there is an a under p and create a new a node under
+// p and since n does not exist we will add n under a
+
+// if letters already exist then it will be marked with endOfWord true
+// if it doesnt exist then it will add the letters and then mark the end of word for that word
+
+// (root)
+//    |
+//    a (node for 'a')
+//    |
+//    p (node for 'p')
+//    |
+//    p (node for 'p', isEndOfWord = true)  <-- end of "app"
+//    |
+//    l (node for 'l')
+//    |
+//    e (node for 'e', isEndOfWord = true)  <-- end of "apple"
+//    |
+//    n (node for 'n', isEndOfWord = true)  <-- new node for "pan"
+
 class TrieNode {
-  constructor() {
-    this.children = {}; // Object to store the children nodes for each character
-    this.isEndOfWord = false; // Boolean to mark if the node represents the end of a word
-    console.log("TrieNode created:", this);
-  }
+	constructor() {
+		this.children = {};
+		this.isEndofWord = false;
+	}
 }
-
 class Trie {
-  constructor() {
-    this.root = new TrieNode(); // The root of the Trie is initialized with an empty node
-    console.log("Trie initialized with root node:", this.root);
-  }
+	constructor() {
+		this.root = new TrieNode();
+	}
+	insert(word) {
+		let node = this.root;
+		for (let char of word) {
+			if (!node.children[char]) {
+				node.children[char] = new TrieNode();
+			}
+			node = node.children[char];
+		}
+		node.isEndofWord = true;
+	}
+	search(word) {
+		let node = this.root;
 
-  // Method to insert a word into the Trie
-  insert(word) {
-    let node = this.root; // Start from the root node
-    console.log(`Inserting the word: '${word}'`);
+		for (let char of word) {
+			if (!node.children[char]) {
+				return false;
+			}
+			node = node.children[char];
+		}
 
-    // Iterate over each character in the word
-    for (let char of word) {
-      console.log(`Processing character: '${char}'`);
-
-      // Check if the current node has a child node corresponding to the character
-      if (!node.children[char]) {
-        // If the character is not found, create a new TrieNode for this character
-        console.log(`Character '${char}' not found. Creating a new node.`);
-        node.children[char] = new TrieNode(); // Create a new node for the character
-      } else {
-        // If the character exists, move to the next level (child node)
-        console.log(`Character '${char}' found. Moving to the next node.`);
-      }
-      
-      node = node.children[char]; // Move to the next node (either newly created or found)
-      console.log("Current node after moving:", node);
-    }
-
-    // After processing all characters, mark the last node as the end of the word
-    node.isEndOfWord = true; 
-    console.log(`Word '${word}' inserted successfully. Marking the end of word.`);
-  }
-
-  // Method to search for a word in the Trie
-  search(word) {
-    let node = this.root; // Start from the root node
-    console.log(`Searching for the word: '${word}'`);
-
-    // Iterate over each character in the word
-    for (let char of word) {
-      console.log(`Checking for character: '${char}'`);
-
-      // Check if the current node has a child corresponding to the character
-      if (!node.children[char]) {
-        // If the character is not found, return false because the word is not in the Trie
-        console.log(`Character '${char}' not found. Word does not exist.`);
-        return false;
-      }
-
-      node = node.children[char]; // Move to the next node (child node corresponding to the character)
-      console.log("Current node after moving:", node);
-    }
-
-    // After processing all characters, check if the current node marks the end of the word
-    if (node.isEndOfWord) {
-      console.log(`Word '${word}' found in the Trie.`);
-      return true; // Return true if it's a valid word in the Trie
-    } else {
-      // If the word is a prefix but not a complete word, return false
-      console.log(`Reached the end of the word but it's not a complete word in the Trie.`);
-      return false;
-    }
-  }
+		return node.isEndofWord;
+	}
+	startsWith(prefix) {
+		let node = this.root;
+		for (let char of prefix) {
+			if (!node.children[char]) {
+				return false;
+			}
+			node = node.children[char];
+		}
+		return true;
+	}
 }
 
 // Example usage:
 const trie = new Trie();
 
-// Inserting words into the Trie
 console.log("Inserting 'apple':");
 trie.insert('apple');
-console.log("\nInserting 'app':");
+console.log("Inserting 'app':");
 trie.insert('app');
-// Searching for words in the Trie
-console.log("\nSearching for 'apple':");
-console.log('Result:', trie.search('apple')); // true
+console.log("Inserting 'pan':");
+trie.insert('pan');
 
-console.log("\nSearching for 'app':");
-console.log('Result:', trie.search('app')); // true
+console.log("Searching for 'apple':");
+console.log('Result:', trie.search('apple'));
+console.log("Searching for 'app':");
+console.log('Result:', trie.search('app'));
+console.log("Searching for 'bat':");
+console.log('Result:', trie.search('bat'));
+console.log("Searching for 'appl':");
+console.log('Result:', trie.search('appl'));
 
-console.log("\nSearching for 'bat':");
-console.log('Result:', trie.search('bat')); // false
-
-console.log("\nSearching for 'appl':");
-console.log('Result:', trie.search('appl')); // false
+console.log("Starts with 'app':");
+console.log('Result:', trie.startsWith('app'));
+console.log("Starts with 'ban':");
+console.log('Result:', trie.startsWith('ban'));
