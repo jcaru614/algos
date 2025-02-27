@@ -26,7 +26,7 @@ class BinarySearchTree {
 			return this;
 		} else {
 			let current = this.root;
-			while (true) {
+			while (current) {
 				if (value === current.value) return undefined;
 				if (value < current.value) {
 					if (current.left === null) {
@@ -74,13 +74,88 @@ class BinarySearchTree {
 		}
 		return current;
 	}
+	BFS() {
+		let data = [];
+		let queue = [];
+		if (!this.root) return data;
+		queue.push(this.root);
+		while (queue.length) {
+			let node = queue.shift();
+			data.push(node.value);
+			if (node.left) queue.push(node.left);
+			if (node.right) queue.push(node.right);
+		}
+		return data;
+	}
+	preorderDFS(root) {
+		if (!root) return;
+		console.log(root.value); // Visit root first
+		preorderDFS(root.left); // Traverse left subtree
+		preorderDFS(root.right); // Traverse right subtree
+	}
+	inorderDFS(root) {
+		if (!root) return;
+		inorderDFS(root.left); // Traverse left subtree
+		console.log(root.value); // Visit root
+		inorderDFS(root.right); // Traverse right subtree
+	}
+	postorderDFS(root) {
+		if (!root) return;
+		postorderDFS(root.left); // Traverse left subtree
+		postorderDFS(root.right); // Traverse right subtree
+		console.log(root.value); // Visit root last
+	}
 }
 
 var tree = new BinarySearchTree();
 tree.insert(10);
-tree.insert(5);
+tree.insert(6);
+tree.insert(15);
+tree.insert(3);
 tree.insert(8);
-tree.insert(2);
-tree.insert(2);
+tree.insert(20);
+
 console.log(tree.find(5));
 console.log(tree);
+console.log('BFS Output:', tree.BFS());
+// BFS Output: [ 10, 6, 15, 3, 8, 20 ]
+
+// BFS looks at all levels on the same level before looking at child so looking horizontally first before moving on
+// create a queue and add to queue
+// then place root node in queue
+// dequeue a node from the queue and push the value of the node into the variable that stores th enodes
+// if there is a left child on the node dequeued add to queue
+//  if there is a right child on the node dequeued add to queue
+// once the queue is empty you are done
+// return the variable that stores the values
+
+//      10
+//    /    \
+//   6      15
+//  / \       \
+//  3   8      20
+
+
+// Preorder:
+// 10
+// 6
+// 3
+// 8
+// 15
+// 20
+
+// Inorder:
+// 3
+// 6
+// 8
+// 10
+// 15
+// 20
+
+// Postorder:
+// 3
+// 8
+// 6
+// 20
+// 15
+// 10
