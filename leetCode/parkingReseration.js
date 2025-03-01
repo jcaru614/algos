@@ -6,61 +6,67 @@
 
 // Params
 
-// spotsAvailable = number guest parking
+// totalSpots = number guest parking
 // maxTimeAllowed = Defined time allowed for spot
 // listOfRequests
 //          personRequested
 //          requestDate
-//          numberSpotsRequested
+//          spotsRequested
 //          maxTimeRequested
 
-function parkingReservation(spotsAvailable, maxTimeAllowed, listOfRequests) {
-	const requestResponse = [];
-	let spotsLeft = spotsAvailable;
+function parkingReservation(totalSpots, maxTimeAllowed, listOfRequests) {
+	const responses = [];
+
+	let spotsLeft = totalSpots;
 	for (let i = 0; i < listOfRequests.length; i++) {
 		const request = listOfRequests[i];
 
 		if (request.maxTimeRequested > maxTimeAllowed) {
-			requestResponse.push({
+			responses.push({
 				personRequested: request.personRequested,
 				status: 'Denied',
 				reason: 'Exceeds time limit',
 			});
-		} else if (request.numberSpotsRequested > spotsLeft) {
-			requestResponse.push({
+		} else if (request.spotsRequested > spotsLeft) {
+			responses.push({
 				personRequested: request.personRequested,
 				status: 'Denied',
 				reason: 'No spots available',
 			});
 		} else {
-			requestResponse.push({
+			responses.push({
 				personRequested: request.personRequested,
 				status: 'Accepted',
 				reason: 'Spots available',
 			});
-			spotsLeft -= request.numberSpotsRequested;
+			spotsLeft -= request.spotsRequested;
 		}
 	}
-	return requestResponse;
+	return responses;
 }
 
-const spotsAvailable = 5;
+const totalSpots = 5;
 const maxTimeAllowed = 3;
 
 const listOfRequests = [
 	{
-		personRequested: 'Alice',
+		personRequested: 'John',
 		requestDate: '2024-07-22',
-		numberSpotsRequested: 2,
+		spotsRequested: 2,
 		maxTimeRequested: 2,
 	},
-	{ personRequested: 'Bob', requestDate: '2024-07-22', numberSpotsRequested: 4, maxTimeRequested: 3 },
 	{
-		personRequested: 'Charlie',
+		personRequested: 'Bob',
 		requestDate: '2024-07-22',
-		numberSpotsRequested: 1,
+		spotsRequested: 4,
+		maxTimeRequested: 3,
+	},
+	{
+		personRequested: 'Joe',
+		requestDate: '2024-07-22',
+		spotsRequested: 1,
 		maxTimeRequested: 4,
 	},
 ];
 
-console.log(parkingReservation(spotsAvailable, maxTimeAllowed, listOfRequests));
+console.log(parkingReservation(totalSpots, maxTimeAllowed, listOfRequests));
