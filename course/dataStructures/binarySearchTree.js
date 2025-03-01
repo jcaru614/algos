@@ -8,103 +8,103 @@
 // The right subtree of a node contains only nodes with keys greater than the node’s key.
 
 class Node {
-	constructor(value) {
-		this.value = value;
-		this.left = null;
-		this.right = null;
-	}
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
 }
 
 class BinarySearchTree {
-	constructor() {
-		this.root = null;
-	}
-	insert(value) {
-		let newNode = new Node(value);
-		if (this.root === null) {
-			this.root = newNode;
-			return this;
-		} else {
-			let current = this.root;
-			while (current) {
-				if (value === current.value) return undefined;
-				if (value < current.value) {
-					if (current.left === null) {
-						current.left = newNode;
-						return this;
-					} else {
-						current = current.left;
-					}
-				} else {
-					if (current.right === null) {
-						current.right = newNode;
-						return this;
-					} else {
-						current = current.right;
-					}
-				}
-			}
-		}
-	}
-	find(value) {
-		if (this.root === null) {
-			return false;
-		}
-		if (this.root.value === value) {
-			return this.root;
-		}
-		let current = this.root;
-		let found = false;
-		while (current && !found) {
-			if (value < current.value) {
-				if (current.left === null) {
-					return false;
-				} else {
-					current = current.left;
-				}
-			} else if (value > current.value) {
-				if (current.right === null) {
-					return false;
-				} else {
-					current = current.right;
-				}
-			} else {
-				found = true;
-			}
-		}
-		return current;
-	}
-	BFS() {
-		let data = [];
-		let queue = [];
-		if (!this.root) return data;
-		queue.push(this.root);
-		while (queue.length) {
-			let node = queue.shift();
-			data.push(node.value);
-			if (node.left) queue.push(node.left);
-			if (node.right) queue.push(node.right);
-		}
-		return data;
-	}
-	preorderDFS(root) {
-		if (!root) return;
-		console.log(root.value); // Visit root first
-		preorderDFS(root.left); // Traverse left subtree
-		preorderDFS(root.right); // Traverse right subtree
-	}
-	inorderDFS(root) {
-		if (!root) return;
-		inorderDFS(root.left); // Traverse left subtree
-		console.log(root.value); // Visit root
-		inorderDFS(root.right); // Traverse right subtree
-	}
-	postorderDFS(root) {
-		if (!root) return;
-		postorderDFS(root.left); // Traverse left subtree
-		postorderDFS(root.right); // Traverse right subtree
-		console.log(root.value); // Visit root last
-	}
+  constructor() {
+    this.root = null;
+  }
+  insert(value) {
+    let newNode = new Node(value);
+    if (this.root === null) {
+      this.root = newNode;
+      return this;
+    } else {
+      let current = this.root;
+      while (current) {
+        if (value === current.value) return undefined;
+        if (value < current.value) {
+          if (current.left === null) {
+            current.left = newNode;
+            return this;
+          } else {
+            current = current.left;
+          }
+        } else {
+          if (current.right === null) {
+            current.right = newNode;
+            return this;
+          } else {
+            current = current.right;
+          }
+        }
+      }
+    }
+  }
+  find(value) {
+    if (this.root === null) {
+      return false;
+    }
+    if (this.root.value === value) {
+      return this.root;
+    }
+    let current = this.root;
+    let found = false;
+    while (current && !found) {
+      if (value < current.value) {
+        if (current.left === null) {
+          return false;
+        } else {
+          current = current.left;
+        }
+      } else if (value > current.value) {
+        if (current.right === null) {
+          return false;
+        } else {
+          current = current.right;
+        }
+      } else {
+        found = true;
+      }
+    }
+    return current;
+  }
+  BFS() {
+    let data = [];
+    let queue = [];
+    if (!this.root) return data;
+    queue.push(this.root);
+    while (queue.length) {
+      let node = queue.shift();
+      data.push(node.value);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    return data;
+  }
+  preorderDFS(root) {
+    if (!root) return;
+    console.log(root.value); // Visit root first
+    preorderDFS(root.left); // Traverse left subtree
+    preorderDFS(root.right); // Traverse right subtree
+  }
+  inorderDFS(root) {
+    if (!root) return;
+    inorderDFS(root.left); // Traverse left subtree
+    console.log(root.value); // Visit root
+    inorderDFS(root.right); // Traverse right subtree
+  }
+  postorderDFS(root) {
+    if (!root) return;
+    postorderDFS(root.left); // Traverse left subtree
+    postorderDFS(root.right); // Traverse right subtree
+    console.log(root.value); // Visit root last
+  }
 }
 
 var tree = new BinarySearchTree();
@@ -134,7 +134,6 @@ console.log('BFS Output:', tree.BFS());
 //   6      15
 //  / \       \
 //  3   8      20
-
 
 // Preorder:
 // 10
